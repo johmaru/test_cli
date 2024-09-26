@@ -3,9 +3,37 @@
 //
 
 #include "log_controller.h"
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <stdio.h>
+#include <dirent.h>
+#include <errno.h>
+#include <string.h>
 
-int create_directory(const char *path){
-    if(mkdir(path) == 0){
+#if _WIN32
+#include <direct.h>
+#define mkdir(path, mode) _mkdir(path)
+#endif
+
+int create_directory(const char *path, int os){
+   switch (os)
+   {
+   case 1:
+     #if _WIN32
+     #define if(mkdir(path) == 0){
+        printf("Directory created successfully\n");
+        return 0;
+       
+    }
+    else{
+        printf("Unable to create directory\n");
+        return -1;
+    }
+     #endif
+    break;
+    case 2:
+    case 3:
+    if(mkdir(path, 0777) == 0){
         printf("Directory created successfully\n");
         return 0;
     }
@@ -13,6 +41,10 @@ int create_directory(const char *path){
         printf("Unable to create directory\n");
         return -1;
     }
+   
+   default:
+    break;
+   }
 }
 
 int directory_exists(const char *path){
