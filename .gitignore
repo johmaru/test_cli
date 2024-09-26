@@ -1,0 +1,32 @@
+# Ignore object files
+*.o
+
+# Ignore executable files
+*.exe
+*.out
+
+# Ignore compiled dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Ignore compiled static libraries
+*.a
+*.lib
+
+# Ignore debug files
+*.dSYM/
+*.pdb
+
+# Ignore temporary files
+*.tmp
+*.temp
+*.swp
+
+# Ignore build directories
+/build/
+/dist/
+/bin/
+/obj/
+/Debug/
+/Release/

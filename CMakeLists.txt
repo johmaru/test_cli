@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.29)
+cmake_minimum_required(VERSION 3.22)
 project(test_cli C)
 
 set(CMAKE_C_STANDARD 99)
