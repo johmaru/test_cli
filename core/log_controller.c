@@ -9,6 +9,7 @@
 #include <dirent.h>
 #include <errno.h>
 #include <string.h>
+#include <time.h>
 
 #if _WIN32
 #include <direct.h>
@@ -54,4 +55,10 @@ int directory_exists(const char *path){
     else{
         return 0;
     }
+}
+
+void nowtime_getter(char *buf,size_t buf_size){
+    time_t now = time(NULL);
+    struct tm *t = localtime(&now);
+    strftime(buf,buf_size,"%Y-%m-%d %H:%M:%S",t);
 }
