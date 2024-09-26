@@ -39,14 +39,9 @@ int main(void) {
 
     char file_path[MAX_BUF + 10];
     snprintf(file_path,sizeof(file_path),"%s/log.txt",time_path);
-    FILE *file = fopen(file_path,"w");
-    log_file = file;
-    if(file == NULL){
-        printf("Unable to create file\n");
-        return -1;
-    }
-    fprintf(file,"Log file created successfully\n");
-    fclose(file);
+    
+    create_file(file_path);
+    create_log(file_path,INFO,"intialized");
 
     return 0;
 }
